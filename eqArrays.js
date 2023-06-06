@@ -1,3 +1,5 @@
+// Function that compares two arrays and returns true if equal, and false if not
+// Supports sub-arrays by using recursion
 const eqArrays = function(array1, array2) {
   if (array1.length !== array2.length) {
     return false;
