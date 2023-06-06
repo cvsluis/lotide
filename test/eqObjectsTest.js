@@ -14,3 +14,8 @@ assertEqual(eqObjects(shirtObject, longSleeveShirtObject), false);
 assertEqual(eqObjects(shirtObject , shirtObject2), false);
 assertEqual(eqObjects(multiColorShirtObject, anotherMultiColorShirtObject), true);
 assertEqual(eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject), false);
+
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+assertEqual(eqObjects({ a: { z: 1, p: {o : {y : 3}}}, b: 2 }, { a: { z: 1, p: {o : {y : 3}}}, b: 2 }), true);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { y: 0 }, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
