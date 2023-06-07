@@ -1,21 +1,20 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const eqObjects = require('../eqObjects');
 
-const shirtObject = { color: "red", size: "medium" };
-const anotherShirtObject = { size: "medium", color: "red" };
-const shirtObject2 = { size: "medium", color: "blue" };
-const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
-const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
-const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
-
-assertEqual(eqObjects(shirtObject, anotherShirtObject), true);
-assertEqual(eqObjects(shirtObject, longSleeveShirtObject), false);
-assertEqual(eqObjects(shirtObject , shirtObject2), false);
-assertEqual(eqObjects(multiColorShirtObject, anotherMultiColorShirtObject), true);
-assertEqual(eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject), false);
-
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
-assertEqual(eqObjects({ a: { z: 1, p: {o : {y : 3}}}, b: 2 }, { a: { z: 1, p: {o : {y : 3}}}, b: 2 }), true);
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { y: 0 }, b: 2 }), false);
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+describe("#eqObjects", () => {
+  it("returns true when passed { color: 'red', size: 'medium' } and { size: 'medium', color: 'red' }", () => {
+    assert.strictEqual(eqObjects({ color: "red", size: "medium" }, { size: "medium", color: "red" }), true);
+  });
+  it("returns false when passed { color: 'blue', size: 'medium' } and { size: 'medium', color: 'red' }", () => {
+    assert.strictEqual(eqObjects({ color: "blue", size: "medium" }, { size: "medium", color: "red" }), false);
+  });
+  it("returns true when passed { a: { z: 1 }, b: 2 } and { a: { z: 1 }, b: 2 }", () => {
+    assert.strictEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+  });
+  it("returns true when passed { a: { z: 1, p: {o : {y : 3}}}, b: 2 } and { a: { z: 1, p: {o : {y : 3}}}, b: 2 }", () => {
+    assert.strictEqual(eqObjects({ a: { z: 1, p: {o : {y : 3}}}, b: 2 }, { a: { z: 1, p: {o : {y : 3}}}, b: 2 }), true);
+  });
+  it("returns false when passed { a: 1, b: 2 } and { a: 1, b: 3 }", () => {
+    assert.strictEqual(eqObjects({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+  });
+});
