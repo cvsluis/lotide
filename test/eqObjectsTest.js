@@ -14,7 +14,7 @@ describe("#eqObjects", () => {
   it("returns true when passed { a: { z: 1, p: {o : {y : 3}}}, b: 2 } and { a: { z: 1, p: {o : {y : 3}}}, b: 2 }", () => {
     assert.strictEqual(eqObjects({ a: { z: 1, p: {o : {y : 3}}}, b: 2 }, { a: { z: 1, p: {o : {y : 3}}}, b: 2 }), true);
   });
-  it("returns false when passed { a: 1, b: 2 } and { a: 1, b: 3 }", () => {
-    assert.strictEqual(eqObjects({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+  it("returns false when passed { a: 1, b: 2 } and { a: 1, c: 2 }", () => {
+    assert.strictEqual(eqObjects({ a: 1, c: 2 }, { a: 1, b: 2 }), false);
   });
 });
