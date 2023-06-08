@@ -1,13 +1,15 @@
 // Function that takes in an array and callback and returns a slice of the array based on the criteria specified in the callback
 const takeUntil = function(array, callback) {
-  const result = [];
+  const results = [];
   for (const item of array) {
+    // stop loop when item meets callback criteria
     if (callback(item)) {
       break;
     }
-    result.push(item);
+    // add element to results array
+    results.push(item);
   }
-  return result;
+  return results;
 };
 
 module.exports = takeUntil;

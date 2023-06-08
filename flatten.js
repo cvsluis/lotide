@@ -1,15 +1,18 @@
 // Function that takes in an array containing a nested array of elements and returns a flattened version of the array
 // Supports unlimited nesting by using recursion
 const flatten = function(array) {
-  let newArray = [];
+  let results = [];
   array.forEach(i => {
+    // check if element is an array
     if (Array.isArray(i)) {
-      flatten(i).forEach(j => newArray.push(j));
+      // use recursion to go through each element of array
+      flatten(i).forEach(j => results.push(j));
+      // element is not array, push element to new array
     } else {
-      newArray.push(i);
+      results.push(i);
     }
-  }) 
-  return newArray;
+  });
+  return results;
 };
 
 module.exports = flatten;
