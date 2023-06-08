@@ -1,6 +1,6 @@
 {
   "name": "@cvsluis/lotide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lotide Library Project from Lighthouse Labs Bootcamp",
   "main": "index.js",
   "directories": {
